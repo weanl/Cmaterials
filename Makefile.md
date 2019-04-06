@@ -208,6 +208,106 @@ complicated.o: complicated.c
     g$(CC) -o $@ $^
 ```
 
+#### 6. 多目标规则与多规则目标
+
+  - 多目标规则
+```make
+target1 target2: ...
+```
+  
+  - 多规则目标
+  <br>静态模式规则</br>
+```make
+# 静态模式规则简化 complicated makefile
+$(object): %.o: %.c
+    $(CC) -o $@ -c $<
+```
+&emsp;&emsp;(依赖模式的作用就是表示要如何生成依赖文件。具体的生成过程，就是使用目标模式过滤出来的值，
+替换依赖模式字符%所表示的位置。因此，如果依赖模式为%.c， 则使用上述例子过滤出来的main来替换字符%， 最终得到依赖文件main.c)
+
+  - 伪目标
+  <br>clean命令删除中间结果和可执行文件</br>
+```make
+# complicated 项目添加clean 规则
+clean:
+    rm -rf complicated complicated.o main.o
+```
+&emsp;&emsp;执行make clean时没有问题，但目录下有clean文件时，无法正常删除，所以采用伪目标的方法：
+```make
+# complicated 项目添加clean 规则
+.PHONY: clean
+clean:
+    rm -rf complicated complicated.o main.o
+```
+
+#### 7. 进阶例子的进一步修改
+
+```make
+# ---------------------------------------------
+# Makefile
+# 描述：complicated 项目 makefile文件
+# 版本：v1.2
+# 修改记录：
+# 1. 为complicated项目makefile添加注释
+# 2. 使用变量改进我们complicated项目的makefile
+# 3. 使用静态模式规则，简化makefile
+# 4. 使用伪目标，加上clean规则
+
+# 定义可执行文件变量
+executable := complicated
+# 定义源文件列表变量
+sources := main.c complicated.c
+# 使用变量的引用替换，定义object 文件列表
+objects := $(sources:.c=.o)
+# 定义编译命令变量
+CC := gcc
+RM ：= rm -rf
+
+
+# 终极目标规则，生成 complicated 可执行文件
+$(executable): $(objects)
+    $(CC) -o $@ $^
+
+# 子规则，main.o和complicated.o的生成规则，使用静态模式规则
+$(objects): %.o:%.c
+    $(CC) -o $@ -c $<
+
+# clean 规则
+.PHONY: clean
+clean:
+    $(RM) $(executable) $(objects)
+
+```
+
+#### 8. 内嵌函数
+
+
+
+
+#### 9. 自动生成依赖关系
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
