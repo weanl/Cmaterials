@@ -73,7 +73,13 @@ int main(int argc, char*  argv[]) {
 
 
 
-#### 3.
+#### 3. 项目结构设计
+|-- main.cpp 
+|-- stars.cpp 
+|-- solarsystem.cpp 
+|-- stars.hpp 
+|-- solarsystem.cpp 
+|-- Makefile
 
 main.cpp文件
 ```cpp
@@ -117,6 +123,7 @@ int main(int argc, char*  argv[]) {
 
 
 
+#### 4. 代码实现
 
 
 
@@ -134,4 +141,14 @@ int main(int argc, char*  argv[]) {
 
 
 
-#### 4.
+
+
+
+
+
+
+
+
+
+
+#### 5. 
