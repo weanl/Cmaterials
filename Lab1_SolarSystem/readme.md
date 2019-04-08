@@ -74,12 +74,14 @@ int main(int argc, char*  argv[]) {
 
 
 #### 3. 项目结构设计
+```shell
 |-- main.cpp 
 |-- stars.cpp 
 |-- solarsystem.cpp 
 |-- stars.hpp 
 |-- solarsystem.cpp 
 |-- Makefile
+```
 
 main.cpp文件
 ```cpp
@@ -125,7 +127,11 @@ int main(int argc, char*  argv[]) {
 
 #### 4. 代码实现
 
-
+设计知识点：
+  - OpenGL 的矩阵模式
+  - OpenGL 的常用图想绘制接口
+  - OpenGL 中的视角
+  - OpenGL 的光照实现
 
 
 
