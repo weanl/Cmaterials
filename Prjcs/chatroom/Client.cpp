@@ -14,7 +14,7 @@ Client::Client () {
     pid = 0;
     isClientwork = true;
     epfd = 0;
-    // pip2_fd[2] ??
+    // pipe_fd[2] ??
 }
 
 
@@ -79,7 +79,7 @@ void Client::Start() {
             }
             else
             {
-                // write
+                // write in pipe[1] will trigger read in pipe_fd[0]
                 if (write(pipe_fd[1], message, strlen(message)-1) < 0) {
                     perror("write error");
                     exit(-1);
