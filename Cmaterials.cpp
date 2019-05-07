@@ -4,12 +4,12 @@
 #include <iostream>
 #include "Exa1_multithread/exa1.h"
 
-using namespace std;
+using std::cout;
 
 
 int main () {
 
-    cout << "Hello!\n";
+    cout << "Hello, this is Cmaterials!\n";
 
     multithread();
 
