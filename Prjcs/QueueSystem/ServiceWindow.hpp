@@ -17,7 +17,8 @@ private:
 
 public:
     inline ServiceWindow(/* args */) : window_status(IDLE) {};
-    ~ServiceWindow();
+    //
+    // ~ServiceWindow();
 
     inline bool isIdle () const {return (window_status==IDLE);}
     inline void serveCustomer (Customer &customer) {this->customer=customer;}
